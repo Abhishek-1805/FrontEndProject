@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDO</title>
+</head>
+<body>
+    <h2>ToDOList</h2>
+    <ul id = "ToDOList"></ul>
+    <div>
+        <input id = "addtask" type="text">
+        <button id="submit" >Add Task</button>
+    </div>
+    <h3>
+        <ul id = "DoneList"><b>Completed</b></ul>
+    </h3>
+
+</body>
+<script>
+
+let submit = document.getElementById("submit");
+let addtask = document.getElementById("addtask");
+let todo = document.getElementById("ToDOList");
+let donelist = document.getElementById("DoneList");
+
+let list = new Array();
+
+submit.addEventListener("click",(event)=>
+{
+    if(addtask.value !=0)
+    {
+        list.push(addtask.value);
+
+        todo.innerHTML += '<li id="' + (list.length-1) + '"><button onclick="complete(' + (list.length-1) + ')">' + addtask.value + '</button></li>';
+
+        addtask.clear;
+        addtask.value = " ";
+    }
+});
+
+function complete(id)
+{
+    donelist.innerHTML +='<li>' +  list[id]+ '</li>'
+}
+
+</script>
+</html>
